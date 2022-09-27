@@ -1,0 +1,83 @@
+
+Sic bo is a dice game played with three die.  It is very popular in Asia, the US and the UK.  
+Players will pick the type of bet they will place, each of which has certain pay-out odds and winning conditions and then roll the dice.  
+You will implement the following bet types: Big, Small (these two are the most common), Even, and Odd. 
+You can find definitions for these under the previous link for Sic bo.  Please use the UK variant of odds to determine the payout.
+
+Additional requirements:
+
+    Starting Page
+        The initial page should contain the form you fill out to place each wager. Explain the bets and and odds used.
+        For each bet type, allow them to enter the value they are betting on.  
+        They should be able to place multiple simultaneous bets. For example, bet even and odd (you'll note this doesn't make sense but let them do it anyway)
+    Result Page
+        The resulting page should display the results of the roll using images
+        For each bet type, indicate how much they bet, if they won or lost that bet and display how much they won or lost.  For example, a person betting $1 on 1:1 odds would get $2.  Betting $2 on 1:1 would get $4.  Betting $1 on 30:1 odds gets them $31 and $2 gets them $62 and so on... Losing the bet means loosing the money!
+        Show the aggregate bet amount, loss, winnings amounts.
+        Allow them to return to the starting page easily so they can place another bet.
+    The roll
+        The roll should use random numbers, do not tamper with the random number to increase the odds of the house winning ;)
+    Error Checking
+        On the server check for sensible errors and display them, for example placing a bet for "a" dollars.
+
+Remember to put your code on github and submit the link as part of this project assignment.
+
+Very simplified/incomplete examples are shown below.  Do not feel as though you are constrained to this exact design but this can guide you towards what a successful program might look like and answer common questions through concrete examples.
+    
+    Example 1 Bet Page:
+        Big Bet Amount [                      ]
+        Small Bet Amount [       5               ]
+        Even Bet Amount [          5            ]
+        Odd Bet Amount [                      ]
+        [Submit]
+    Example 1 Result Page:
+        Your Roll
+            INSERT DICE PICTURES HERE
+        Big Bet
+            You did not bet on a big bet.
+        Small Bet 
+            You bet $5. You lost this bet losing $5.
+        Even Bet
+            You bet $5. You won this bet, winning back your $5 plus the payout of $5 for a total of $10.
+        Odd Bet
+            You did not bet on an odd bet.
+        Summary
+            You bet a total of $10 and received a total of $10.  Your total earnings/loss was $0.
+    
+    Example 2 Bet Page:
+        Big Bet Amount [                      ]
+        Small Bet Amount [       a               ]
+        Even Bet Amount [                      ]
+        Odd Bet Amount [           5           ]
+        [Submit]
+    Example 2 Result Page:
+        Sorry your must bet must be numeric.  We can't pay out in any other form!
+
+    Example 3 Bet Page:
+        Big Bet Amount [                      ]
+        Small Bet Amount [       5               ]
+        Even Bet Amount [                      ]
+        Odd Bet Amount [           2           ]
+        [Submit]
+    Example 3 Result Page:
+        Your Roll
+            INSERT DICE PICTURES HERE
+        Big Bet
+            You did not bet on a big bet.
+        Small Bet 
+            You bet $5. You lost this bet losing $5.
+        Even Bet
+            You did not bet on an even bet.
+        Odd Bet
+            You bet $2. You won this bet, winning back your $2 plus the payout of $2 for a total of $4.
+        Summary
+            You bet a total of $7 and received a total of $4.  Your total earnings/loss was $-3.
+    
+    Example 4 Bet Page:
+        Big Bet Amount [                     ]
+        Small Bet Amount [                      ]
+        Even Bet Amount [                     ]
+        Odd Bet Amount [                    ]
+        [Submit]
+    Example 5 Result Page:
+        Sorry, you need to place a bet if you want to roll the dice!
