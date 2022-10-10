@@ -1,25 +1,35 @@
-<!--
-    CSCI 297, Hello World, Jacob Borth, 20 September 2022
-    Displays "Hello World".
--->
-
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Hello World Assignment</title>
+        <title>Sic Bo Assignment</title>
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     </head>
     <body>
+        <form action="index2.php" method="post">
         <?php
-        // Figure out how to keep them from overlapping.
-        $dice1 = rand(1,6);
-        echo "<img src='images/Alea_$dice1.png'";
-        $dice2 = rand(1,6);
-        echo "<img src='images/Alea_$dice2.png'";
-        $dice3 = rand(1,6);
-        echo "<img src='images/Alea_$dice3.png'";
+        $test = (int) $_POST['balance'];
+        if ($test <= 0) {
+            $balance = 1000;
+            echo "Your new balance is $$balance.<br><br>";
+        } else {
+            $balance = $_POST['balance'];
+            echo "Your current balance is $$balance.<br><br>";
+        }
 
+        $max = intval($balance/4);
         
-        
+        echo "Big Bet Amount: $<input type='number' name='bigbet' step='1' value='0' min='0' max='$max'> 
+        Odds are 1:1 for a total roll score from 11 to 17 (inclusive) with the exception of a triple.<br>
+        Small Bet Amount: $<input type='number' name='smallbet' step='1' value='0' min='0' max='$max'> 
+        Odds are 1:1 for a total roll score from 4 to 10 (inclusive) with the exception of a triple.<br>
+        Even Bet Amount: $<input type='number' name='evenbet' step='1' value='0' min='0' max='$max'> 
+        Odds are 1:1 for a total roll score of an even number with the exception of a triple.<br>
+        Odd Bet Amount: $<input type='number' name='oddbet' step='1' value='0' min='0' max='$max'> 
+        Odds are 1:1 for a total roll score of an odd number with the exception of a triple.<br>
+        <input type='hidden' name='balance' value='$balance'>
+        <input type='submit' value='Place Bet'>
+        <input type='reset'>";
         ?>
+        </form>
     </body>
 </html>
