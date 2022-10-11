@@ -3,6 +3,7 @@
     Displays "Hello World".
 -->
 
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,7 +11,6 @@
         <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     </head>
     <body>
-        <form action="index.php" method="post">
         <?php
 
         $dice1 = rand(1,6);
@@ -63,13 +63,10 @@
             $betTotal *= -1;
             $wlOutput = "You lost";
         }
-        
         echo "<br>$wlOutput $$betTotal!<br>New Pot Total: $$balance.
         <input type='hidden' name='balance' value='$balance'>";
         if ($balance > 0) {
             echo "<br><input type='submit' value='New Bet'>";
-        } else echo "<br><input type='submit' value='Start Over'>";
-        ?>
-        </form>
+        } else echo "<br><input type='submit' value='Start Over'>";?>
     </body>
 </html>
