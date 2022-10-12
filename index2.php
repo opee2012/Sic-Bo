@@ -11,8 +11,8 @@
         <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     </head>
     <body>
+        <form method="POST" action="index.php">
         <?php
-
         $dice1 = rand(1,6);
         echo "<img src='images/Alea_$dice1.png'>";
         $dice2 = rand(1,6);
@@ -21,10 +21,10 @@
         echo "<img src='images/Alea_$dice3.png'><br>";
 
         $pot = array(0, 0, 0, 0);
-        $big = (int) $_POST["bigbet"];
-        $small = (int) $_POST["smallbet"];
-        $even = (int) $_POST["evenbet"];
-        $odd = (int) $_POST["oddbet"];
+        $big = (int) $_POST['big'];
+        $small = (int) $_POST["small"];
+        $even = (int) $_POST["even"];
+        $odd = (int) $_POST["odd"];
 
         $diceall = $dice1 + $dice2 + $dice3;
 
@@ -52,7 +52,7 @@
         }
 
         $betTotal = $pot[0] + $pot[1] + $pot[2] + $pot[3];
-        $balance = (int) $_POST["balance"];
+        $balance = (int) $_SESSION["balance"];
 
         if ($betTotal >= 0) {
             $balance += $betTotal;
@@ -63,10 +63,17 @@
             $betTotal *= -1;
             $wlOutput = "You lost";
         }
-        echo "<br>$wlOutput $$betTotal!<br>New Pot Total: $$balance.
-        <input type='hidden' name='balance' value='$balance'>";
-        if ($balance > 0) {
-            echo "<br><input type='submit' value='New Bet'>";
-        } else echo "<br><input type='submit' value='Start Over'>";?>
+
+        echo "<br>$wlOutput $$betTotal!<br>New Pot Total: $$balance.";
+        $_SESSION["balance"] = $balance;
+        ?>
+        <form action="/index.php">
+        <?php
+            if ($balance > 0) {
+                echo "<br><input type='submit' value='New Bet' name='New Bet'>";
+                echo "<br><input type='submit' value='Start Over' name='Start Over'>";
+            } else echo "<br><input type='submit' value='Start Over' name='Start Over'>";
+        ?>
+        </form>
     </body>
 </html>
